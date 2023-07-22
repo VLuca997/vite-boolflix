@@ -8,7 +8,10 @@ import axios from 'axios';
 // my-component.js
 export default {
   data() {
-    return 
+    return {
+      
+      series:[]
+    }
   },
   components:{
     HeaderComponent, MainComponent, FooterComponent
