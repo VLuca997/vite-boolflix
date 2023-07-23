@@ -35,7 +35,7 @@ export default {
 </script>
 <template>
     <div>
-        <h2>Series:</h2>
+        <h2 class="bg-danger">Series:</h2>
         <ul>
             <li v-for="(SeriesTv,i) in store.series" key="i">
                 <ol>

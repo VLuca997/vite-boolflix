@@ -15,26 +15,34 @@ export default {
 
 <template>
     <div>
-        <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand logo p-0" href="#">
+                    <img class="img-fluid" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" alt="">
+                </a>
 
-            <div class="input-group mb-3">
+                <form @submit.prevent class="form-inline mx-auto w-75">
+                    <input class="form-control" type="search" placeholder="Cerca" aria-label="Search"
+                    v-model="store.searchText" @keydown.enter="$emit('performSearch')">
 
-                <input v-model="store.searchText" type="text" class="form-control" placeholder="Cerca qui il Film o la Serie TV!" aria-label="Ricerca Film o Serie TV!" aria-describedby="button-addon2">
-                    <!-- BUTTON SCATENA EVENTI -->
-                <button class="btn btn-outline-secondary" 
-                type="button" 
-                id="button-addon2" 
-                @click="$emit('performSearch')"><!-- COMUNICHIAMO DA FIGLIO A PADRE E SCATENIAMO L'AEVENTO PERFORMSEARCH -->
-                    Cerca..
-                </button>
+                   
+                </form>
 
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Account</a>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
     </div>
 </template>
-
 <style lang="scss" >
-    i{
-        color: red;
+    .container-fluid{
+        height: 50px;
     }
+   .logo{
+    width: 150px;
+    
+   }
 </style>

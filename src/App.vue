@@ -4,6 +4,8 @@ import HeaderComponent from './components/HeaderComponent.vue';
 import MovieComponent from './components/MovieComponent.vue';
 import SeriesComponent from './components/SeriesComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
+import BodyStyleComponent from './components/BodyStyleComponent.vue';
+
 import { store } from './store';//IMPORTO STORE.JS CON "DESTRUCTURING"
 import axios from 'axios';//AXIOS GLOBALE
 
@@ -16,7 +18,7 @@ export default {
         }
     },//---------------------------------------------------------------
     components:{
-        HeaderComponent, MovieComponent,SeriesComponent, FooterComponent
+        HeaderComponent, MovieComponent, SeriesComponent, FooterComponent, BodyStyleComponent
     },//---------------------------------------------------------------
     methods:{
         search(){
@@ -49,12 +51,23 @@ export default {
 
 <template>
     <HeaderComponent @performSearch = "search()"/>  <!--EVENTO SCATENATO DA HEADERCOMPONENT -->
-    <MovieComponent/>
-    <SeriesComponent/>
+    <div class="text-light mx-2">
+
+        <MovieComponent/>
+        <SeriesComponent/>
+        
+    </div>
+    <BodyStyleComponent/>
 
     <FooterComponent />
 </template>
 
 <style lang="scss">
-@use "assets/scss/main.scss";
+    @use "assets/scss/main.scss";
+body{
+    background: black ;
+}
+    i{
+        color: red;
+    }
 </style>
