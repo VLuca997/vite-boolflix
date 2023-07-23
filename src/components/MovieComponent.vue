@@ -44,7 +44,8 @@ export default {
                     <li>{{ movie.title }}</li>
                     <li>{{ movie.original_title }}</li>
                     <li class="flag"><img :src="getCountryflag(movie.original_language)" alt="movie.original_language"></li>  <!--V-BIND SU IMG-->
-                    <li>{{ movie.vote_average }}</li>
+                    <span v-for="numero in Math.min(5, Math.ceil(movie.vote_average / 2))" :key="numero"><i class="fa-solid fa-star"></i></span>
+                    <span v-for="numero in Math.min(5, 5 - Math.ceil(movie.vote_average / 2))" :key="numero"><i class="fa-regular fa-star"></i></span>
 
                 </ol>
             </li>

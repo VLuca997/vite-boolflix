@@ -34,5 +34,7 @@ export default {
 </template>
 
 <style lang="scss" >
-
+    i{
+        color: red;
+    }
 </style>

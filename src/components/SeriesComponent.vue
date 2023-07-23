@@ -10,6 +10,7 @@ export default {
         } 
     },
     methods:{
+
         getCountryflag2(flag){
             if (flag == 'it' ){
                 return 'https://flagicons.lipis.dev/flags/4x3/it.svg'
@@ -28,7 +29,7 @@ export default {
                 return 'https://flagicons.lipis.dev/flags/4x3/un.svg'
             }
         }
-    }
+    },
     
 }
 </script>
@@ -36,14 +37,17 @@ export default {
     <div>
         <h2>Series:</h2>
         <ul>
-            <li v-for="(SeriesTv,y) in store.series" key="y">
+            <li v-for="(SeriesTv,i) in store.series" key="i">
                 <ol>
                     <li class="cover"><img :src="`https://image.tmdb.org/t/p/w342${SeriesTv.poster_path}` || `https://image.tmdb.org/t/p/w500${SeriesTv.poster_path}` " alt=""></li>
                     <li>{{ SeriesTv.name }}</li>
                     <li>{{ SeriesTv.original_name }}</li>
                     <li class="flag"><img :src="getCountryflag2(SeriesTv.original_language)" :alt="SeriesTv.original_language"></li>  <!--V-BIND SU IMG/ALT-->
-                    <li>{{ SeriesTv.vote_average }}</li>
-
+                    <li>{{ Math.ceil(SeriesTv.vote_average / 2) }}</li>
+                    <div>
+                        <span v-for="numero in Math.min(5, Math.ceil(SeriesTv.vote_average / 2))" :key="numero"><i class="fa-solid fa-star"></i></span>
+                        <span v-for="numero in Math.min(5, 5 - Math.ceil(SeriesTv.vote_average / 2))" :key="numero"><i class="fa-regular fa-star"></i></span>
+                    </div>
                 </ol>
             </li>
         </ul>
