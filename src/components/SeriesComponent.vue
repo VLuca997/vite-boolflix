@@ -10,7 +10,7 @@ export default {
         } 
     },
     methods:{
-        getCountryflag(flag){
+        getCountryflag2(flag){
             if (flag == 'it' ){
                 return 'https://flagicons.lipis.dev/flags/4x3/it.svg'
             }
@@ -38,9 +38,10 @@ export default {
         <ul>
             <li v-for="(SeriesTv,y) in store.series" key="y">
                 <ol>
+                    <li class="cover"><img :src="`https://image.tmdb.org/t/p/w342${SeriesTv.poster_path}` || `https://image.tmdb.org/t/p/w500${SeriesTv.poster_path}` " alt=""></li>
                     <li>{{ SeriesTv.name }}</li>
                     <li>{{ SeriesTv.original_name }}</li>
-                    <li><img :src="getCountryflag(SeriesTv.original_language)" :alt="SeriesTv.original_language"></li>  <!--V-BIND SU IMG/ALT-->
+                    <li class="flag"><img :src="getCountryflag2(SeriesTv.original_language)" :alt="SeriesTv.original_language"></li>  <!--V-BIND SU IMG/ALT-->
                     <li>{{ SeriesTv.vote_average }}</li>
 
                 </ol>
@@ -50,9 +51,13 @@ export default {
 </template>
 <style lang="scss" scoped>
 
-img{
+.flag{
         max-width: 30px;
         border: 1px solid black;
     }
+    .cover{
+        max-width: 100%;
+    }
+
 
 </style>

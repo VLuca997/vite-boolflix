@@ -38,9 +38,12 @@ export default {
         <ul>
             <li v-for="(movie,i) in store.movies" key="i">
                 <ol>
+                    <li class="cover">
+                        <img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}` || `https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="">
+                    </li>
                     <li>{{ movie.title }}</li>
                     <li>{{ movie.original_title }}</li>
-                    <li><img :src="getCountryflag(movie.original_language)" alt="movie.original_language"></li>  <!--V-BIND SU IMG-->
+                    <li class="flag"><img :src="getCountryflag(movie.original_language)" alt="movie.original_language"></li>  <!--V-BIND SU IMG-->
                     <li>{{ movie.vote_average }}</li>
 
                 </ol>
@@ -50,9 +53,12 @@ export default {
 
 </template>
 <style lang="scss" scoped>
-    img{
+    .flag{
         max-width: 30px;
         border: 1px solid black;
+    }
+    .cover{
+        max-width: 100%;
     }
 
 
