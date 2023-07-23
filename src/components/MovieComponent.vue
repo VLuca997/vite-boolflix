@@ -40,13 +40,14 @@ export default {
                 <ol>
                     <li>{{ movie.title }}</li>
                     <li>{{ movie.original_title }}</li>
-                    <li><img :src="getCountryflag(movie.original_language)" alt=""></li>  <!--V-BIND SU IMG-->
+                    <li><img :src="getCountryflag(movie.original_language)" alt="movie.original_language"></li>  <!--V-BIND SU IMG-->
                     <li>{{ movie.vote_average }}</li>
 
                 </ol>
             </li>
         </ul>
     </div>
+
 </template>
 <style lang="scss" scoped>
     img{

@@ -2,6 +2,7 @@
 //import component 
 import HeaderComponent from './components/HeaderComponent.vue';
 import MovieComponent from './components/MovieComponent.vue';
+import SeriesComponent from './components/SeriesComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
 import { store } from './store';//IMPORTO STORE.JS CON "DESTRUCTURING"
 import axios from 'axios';//AXIOS GLOBALE
@@ -15,13 +16,13 @@ export default {
         }
     },//---------------------------------------------------------------
     components:{
-        HeaderComponent, MovieComponent, FooterComponent
+        HeaderComponent, MovieComponent,SeriesComponent, FooterComponent
     },//---------------------------------------------------------------
     methods:{
         search(){
             console.log(this.store.searchText);//PASSIAMO PER STORE PER CERCARE SEARCHTEXT!
 
-            axios.get('https://api.themoviedb.org/3/search/movie', {// CHIAMATA AXIOS
+            axios.get('https://api.themoviedb.org/3/search/movie', {// CHIAMATA AXIOS PER FILM
                 params: {
                     api_key:'160ffaedc5a1cb0a374cb8b9c43df54a', // API KEY DI TheMovieDatabase
                     query: this.store.searchText,
@@ -31,6 +32,16 @@ export default {
                 console.log(res.data);
                 this.store.movies = res.data.results
             })
+            axios.get('https://api.themoviedb.org/3/search/tv', {// CHIAMATA AXIOS PER SERIE TV
+                params: {
+                    api_key:'160ffaedc5a1cb0a374cb8b9c43df54a', // API KEY DI TheMovieDatabase
+                    query: this.store.searchText,
+                },
+            })
+            .then(res =>{
+                console.log(res.data);
+                this.store.series = res.data.results
+            })
         },
     },//---------------------------------------------------------------
 }
@@ -39,6 +50,8 @@ export default {
 <template>
     <HeaderComponent @performSearch = "search()"/>  <!--EVENTO SCATENATO DA HEADERCOMPONENT -->
     <MovieComponent/>
+    <SeriesComponent/>
+
     <FooterComponent />
 </template>
 
