@@ -51,13 +51,12 @@ export default {
 
 <template>
     <HeaderComponent @performSearch = "search()"/>  <!--EVENTO SCATENATO DA HEADERCOMPONENT -->
-    <div class="text-light mx-2">
+    <div class="text-light pt-3 styles text-wrap">
 
-        <MovieComponent/>
-        <SeriesComponent/>
+        <MovieComponent class=""/>
         
+    
     </div>
-    <BodyStyleComponent/>
 
     <FooterComponent />
 </template>
@@ -66,8 +65,12 @@ export default {
     @use "assets/scss/main.scss";
 body{
     background: black ;
-}
     i{
         color: red;
     }
+}
+.styles{
+    padding: 50px;
+}
+
 </style>
